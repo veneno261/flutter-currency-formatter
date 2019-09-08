@@ -31,3 +31,24 @@ class CurrencyInputFormatter extends TextInputFormatter {
         selection: new TextSelection.collapsed(offset: newText.length));
   }
 }
+
+
+
+TextFormField(
+  controller: _textController,
+  keyboardType: TextInputType.number,
+  maxLength: 11,
+  inputFormatters: [
+    WhitelistingTextInputFormatter.digitsOnly,
+    LengthLimitingTextInputFormatter(11),
+    CurrencyInputFormatter()
+  ],
+  decoration: InputDecoration(
+    labelText: "salary",
+    labelStyle: TextStyle(fontSize: 15),
+    counterStyle: TextStyle(
+      height: double.minPositive,
+    ),
+    counterText: "",
+  ),
+)
